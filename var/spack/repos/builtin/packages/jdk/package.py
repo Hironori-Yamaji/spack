@@ -9,7 +9,6 @@ from spack import *
 import llnl.util.tty as tty
 import os
 
-#testtest
 class Jdk(Package):
     """The Java Development Kit (JDK) released by Oracle Corporation in the
     form of a binary product aimed at Java developers. Includes a complete JRE
