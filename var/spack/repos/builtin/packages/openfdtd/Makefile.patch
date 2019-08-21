@@ -1,0 +1,229 @@
+--- OpenFDTD/src/Makefile.org	2019-08-09 11:29:07.021555992 +0900
++++ OpenFDTD/src/Makefile	2019-08-09 11:29:16.762581710 +0900
+@@ -1,112 +1,114 @@
+-PROGRAM = ../ofd.exe
+-
+-OMPOPT  = /openmp
+-
+-OBJS    =          \
+-Main.obj           \
+-input.obj          \
+-monitor.obj        \
+-memallocfree1.obj  \
+-memallocfree2.obj  \
+-memallocfree3.obj  \
+-setup.obj          \
+-setupSize.obj      \
+-setupSizeNear.obj  \
+-setupId.obj        \
+-setupMurHx.obj     \
+-setupMurHy.obj     \
+-setupMurHz.obj     \
+-setupPmlEx.obj     \
+-setupPmlEy.obj     \
+-setupPmlEz.obj     \
+-setupPmlHx.obj     \
+-setupPmlHy.obj     \
+-setupPmlHz.obj     \
+-setupPml.obj       \
+-setupNear.obj      \
+-solve.obj          \
+-initfield.obj      \
+-updateEx.obj       \
+-updateEy.obj       \
+-updateEz.obj       \
+-updateHx.obj       \
+-updateHy.obj       \
+-updateHz.obj       \
+-vfeed.obj          \
+-efeed.obj          \
+-epoint.obj         \
+-murHx.obj          \
+-murHy.obj          \
+-murHz.obj          \
+-pmlEx.obj          \
+-pmlEy.obj          \
+-pmlEz.obj          \
+-pmlHx.obj          \
+-pmlHy.obj          \
+-pmlHz.obj          \
+-dftNear1d.obj      \
+-dftNear1dX.obj     \
+-dftNear1dY.obj     \
+-dftNear1dZ.obj     \
+-dftNear2d.obj      \
+-dftNear2dX.obj     \
+-dftNear2dY.obj     \
+-dftNear2dZ.obj     \
+-dftNear3d.obj      \
+-calcNear3d.obj     \
+-nearfield_c.obj    \
+-average.obj        \
+-zfeed.obj          \
+-spara.obj          \
+-outputZfeed.obj    \
+-outputSpara.obj    \
+-plot3dGeom.obj     \
+-writeout.obj       \
+-readout.obj        \
+-post.obj           \
+-farfield.obj       \
+-outputFar0d.obj    \
+-outputFar1d.obj    \
+-outputFar2d.obj    \
+-calcFar1d.obj      \
+-calcFar2d.obj      \
+-calcNear1d.obj     \
+-calcNear2d.obj     \
+-logFar1d.obj       \
+-logFar2d.obj       \
+-logNear1d.obj      \
+-logNear2d.obj      \
+-plot2dIter.obj     \
+-plot2dFreq.obj     \
+-plot2dFreq0.obj    \
+-plot2dFar1d.obj    \
+-plot2dFar1d0.obj   \
+-plot3dFar2d.obj    \
+-plot3dFar2d0.obj   \
+-plot2dNear1d.obj   \
+-plot2dNear1d0.obj  \
+-plot2d3dNear2d.obj \
+-plot2dNear2d0.obj  \
+-plot3dNear2d0.obj  \
+-plotTools.obj      \
+-smithChart.obj     \
+-cputime.obj        \
+-ev2d.obj           \
+-ev3d.obj
+-
+-CC      = cl
+-CFLAGS  = /Ox /nologo /I../include /W4 /wd4996
+-CFLAGS  = $(CFLAGS) $(OMPOPT)
+-#CFLAGS  = $(CFLAGS) /D__NEC__
+-LDFLAGS = /Ox /nologo
+-LIBS    =
+-
+-$(PROGRAM): $(OBJS)
+-	@echo "Loading $(PROGRAM) ... "
+-	@$(CC) $(LDFLAGS) /Fe$(PROGRAM) $(OBJS) $(LIBS)
+-
+-.c.obj:
+-	$(CC) /c $(CFLAGS) $<
+-
+-clean:
+-	del *.obj
++PROGRAM = ../ofd
++
++OMPOPT = -fopenmp
++
++OBJS    =        \
++Main.o           \
++input.o          \
++monitor.o        \
++memallocfree1.o  \
++memallocfree2.o  \
++memallocfree3.o  \
++setup.o          \
++setupSize.o      \
++setupSizeNear.o  \
++setupId.o        \
++setupMurHx.o     \
++setupMurHy.o     \
++setupMurHz.o     \
++setupPmlEx.o     \
++setupPmlEy.o     \
++setupPmlEz.o     \
++setupPmlHx.o     \
++setupPmlHy.o     \
++setupPmlHz.o     \
++setupPml.o       \
++setupNear.o      \
++solve.o          \
++initfield.o      \
++updateEx.o       \
++updateEy.o       \
++updateEz.o       \
++updateHx.o       \
++updateHy.o       \
++updateHz.o       \
++vfeed.o          \
++efeed.o          \
++epoint.o         \
++murHx.o          \
++murHy.o          \
++murHz.o          \
++pmlEx.o          \
++pmlEy.o          \
++pmlEz.o          \
++pmlHx.o          \
++pmlHy.o          \
++pmlHz.o          \
++dftNear1d.o      \
++dftNear1dX.o     \
++dftNear1dY.o     \
++dftNear1dZ.o     \
++dftNear2d.o      \
++dftNear2dX.o     \
++dftNear2dY.o     \
++dftNear2dZ.o     \
++dftNear3d.o      \
++calcNear3d.o     \
++nearfield_c.o    \
++average.o        \
++zfeed.o          \
++spara.o          \
++outputZfeed.o    \
++outputSpara.o    \
++plot3dGeom.o     \
++writeout.o       \
++readout.o        \
++post.o           \
++farfield.o       \
++outputFar0d.o    \
++outputFar1d.o    \
++outputFar2d.o    \
++calcFar1d.o      \
++calcFar2d.o      \
++calcNear1d.o     \
++calcNear2d.o     \
++logFar1d.o       \
++logFar2d.o       \
++logNear1d.o      \
++logNear2d.o      \
++plot2dIter.o     \
++plot2dFreq.o     \
++plot2dFreq0.o    \
++plot2dFar1d.o    \
++plot2dFar1d0.o   \
++plot3dFar2d.o    \
++plot3dFar2d0.o   \
++plot2dNear1d.o   \
++plot2dNear1d0.o  \
++plot2d3dNear2d.o \
++plot2dNear2d0.o  \
++plot3dNear2d0.o  \
++plotTools.o      \
++smithChart.o     \
++cputime.o        \
++ev2d.o           \
++ev3d.o
++
++CC      = gcc
++CFLAGS  = -O3 -I../include -Wall $(OMPOPT)
++CFLAGS  += -std=c99
++LDFLAGS = -O3 $(OMPOPT)
++LIBS    = -lm
++
++$(PROGRAM): $(OBJS)
++	@echo "Loading $(PROGRAM) ... "
++	@$(CC) $(LDFLAGS) -o $(PROGRAM) $(OBJS) $(LIBS)
++
++cputime.o: cputime.c
++	$(CC) -c -O2 $?
++
++.c.o:
++	$(CC) -c $(CFLAGS) $<
++
++clean:
++	rm -f *.o
