@@ -26,3 +26,5 @@ class Ermod(AutotoolsPackage):
     def configure_args(self):
         args = ['--with-blas=' + self.spec['lapack'].libs.ld_flags]
         return args
+
+##############
